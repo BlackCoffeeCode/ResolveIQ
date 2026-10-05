@@ -20,6 +20,9 @@ docker compose up --build
 
 ## Deploy to Render (Free Demo)
 
+- Live app: [ResolveIQ](https://blackcoffeecode-resolveiq-web.onrender.com)
+- API documentation: [Swagger UI](https://blackcoffeecode-resolveiq-api.onrender.com/docs)
+
 The root [`render.yaml`](render.yaml) Blueprint defines a static frontend, Docker API, and free PostgreSQL database. In Render, create a new Blueprint and connect `BlackCoffeeCode/ResolveIQ`. Enter a newly rotated `OPENAI_API_KEY` directly in Render when prompted; never put it in the Blueprint or GitHub.
 
 Free services can sleep, and free database limits/retention make this a demo, not durable production hosting. This app has no authentication or rate limiting; public visitors may submit tickets and trigger OpenAI usage. Do not enter sensitive or real customer data. Before production, use persistent paid Postgres and add access controls and rate limits.
