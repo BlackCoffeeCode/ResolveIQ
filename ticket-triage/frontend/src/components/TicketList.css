@@ -1,0 +1,139 @@
+.ticket-list-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--soft-shadow);
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.list-header h2 {
+  margin: 0;
+}
+
+.refresh-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.45rem 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.refresh-button:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  background: var(--surface);
+  font-size: 0.85rem;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background: var(--surface);
+}
+
+.security-row {
+  background: #fff1f2;
+}
+
+[data-theme='dark'] .security-row {
+  background: #3e1e23;
+}
+
+.p0-row {
+  font-weight: 700;
+}
+
+.expanded-row td {
+  background: var(--surface);
+}
+
+.expanded-ticket-content > p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.expanded-ai-analysis {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.expanded-ai-analysis h3 {
+  margin: 0 0 0.6rem;
+}
+
+.expanded-ai-analysis p {
+  margin: 0.4rem 0;
+  line-height: 1.5;
+}
+
+.expanded-ai-analysis ol {
+  margin: 0.35rem 0 0.65rem;
+  padding-left: 1.25rem;
+}
+
+.expanded-ai-analysis li + li {
+  margin-top: 0.25rem;
+}
+
+.empty-state {
+  margin: 0;
+  color: var(--muted);
+}
+
+.skeleton-table {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.skeleton-row {
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: loading 1.2s infinite;
+}
+
+[data-theme='dark'] .skeleton-row {
+  background: linear-gradient(90deg, #26303a 25%, #1a232c 50%, #26303a 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes loading {
+  to {
+    background-position: -200% 0;
+  }
+}

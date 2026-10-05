@@ -1,0 +1,131 @@
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --surface: #f8fafc;
+  --text: #122033;
+  --muted: #64748b;
+  --border: #d6deea;
+  --accent: #0f766e;
+  --accent-alt: #0e9f6e;
+  --accent-soft: rgba(15, 118, 110, 0.15);
+  --soft-shadow: 0 10px 30px rgba(10, 20, 40, 0.08);
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f1720;
+  --panel: #17212b;
+  --surface: #1c2a36;
+  --text: #e5edf5;
+  --muted: #94a9be;
+  --border: #2a3b4a;
+  --accent: #20b2aa;
+  --accent-alt: #2dd4bf;
+  --accent-soft: rgba(45, 212, 191, 0.2);
+  --soft-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(14, 159, 110, 0.12), transparent 48%),
+    radial-gradient(circle at bottom left, rgba(15, 118, 110, 0.12), transparent 45%),
+    var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.app-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.app-header p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.app-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  background: #b91c1c;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  box-shadow: var(--soft-shadow);
+  animation: fade-in 0.2s ease;
+  max-width: min(95vw, 360px);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    padding: 0.75rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .theme-toggle {
+    width: 100%;
+  }
+
+}

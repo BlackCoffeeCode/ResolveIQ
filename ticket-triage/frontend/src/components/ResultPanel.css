@@ -1,0 +1,175 @@
+.result-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--soft-shadow);
+}
+
+.result-panel.placeholder {
+  min-height: 110px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.result-header h2 {
+  margin: 0;
+}
+
+.meta {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.badge-billing {
+  background: #d8e9ff;
+  color: #0e4b9f;
+}
+
+.badge-technical {
+  background: #ffe6c8;
+  color: #a24a07;
+}
+
+.badge-account {
+  background: #ecdfff;
+  color: #5d1f9c;
+}
+
+.badge-feature {
+  background: #d7f6dc;
+  color: #206839;
+}
+
+.badge-security {
+  background: #ffdbdb;
+  color: #900f0f;
+  border: 1px solid #e74141;
+}
+
+.badge-other {
+  background: #e4e6eb;
+  color: #4b5563;
+}
+
+.priority-p0 {
+  background: #dc2626;
+  color: #fff;
+  animation: pulse 1.2s infinite;
+}
+
+.priority-p1 {
+  background: #f97316;
+  color: #fff;
+}
+
+.priority-p2 {
+  background: #facc15;
+  color: #2b2200;
+}
+
+.priority-p3 {
+  background: #9ca3af;
+  color: #fff;
+}
+
+.urgency {
+  margin: 0.9rem 0 0;
+  font-weight: 700;
+}
+
+.security-banner {
+  background: #b91c1c;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.65rem;
+  margin-bottom: 0.9rem;
+  font-weight: 700;
+}
+
+.confidence-wrap {
+  margin-top: 0.9rem;
+}
+
+.confidence-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.confidence-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.3s ease;
+}
+
+.block {
+  margin-top: 1rem;
+}
+
+.block h3 {
+  margin-bottom: 0.5rem;
+}
+
+.block ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.keywords-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.keyword-chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  background: var(--surface);
+  font-size: 0.85rem;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
