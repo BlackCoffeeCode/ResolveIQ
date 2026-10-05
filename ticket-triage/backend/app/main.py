@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 
 from app.controllers.ai_analysis_controller import router as ai_analysis_router
 from app.controllers.ticket_controller import router as ticket_router
+from app.config.settings import get_settings
 from app.database import create_all_tables
 from app.models.ai_analysis import TicketAIAnalysis  # noqa: F401
 from app.models.ticket import Ticket  # noqa: F401
@@ -14,10 +15,13 @@ app = FastAPI(
     version="1.0.0",
 )
 
+settings = get_settings()
+cors_origins = [origin.strip() for origin in settings.cors_origins.split(",") if origin.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=cors_origins,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

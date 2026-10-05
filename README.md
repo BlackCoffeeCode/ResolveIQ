@@ -18,6 +18,14 @@ docker compose up --build
 # API Docs: http://localhost:8000/docs
 ```
 
+## Deploy to Render (Free Demo)
+
+The root [`render.yaml`](render.yaml) Blueprint defines a static frontend, Docker API, and free PostgreSQL database. In Render, create a new Blueprint and connect `BlackCoffeeCode/ResolveIQ`. Enter a newly rotated `OPENAI_API_KEY` directly in Render when prompted; never put it in the Blueprint or GitHub.
+
+Free services can sleep, and free database limits/retention make this a demo, not durable production hosting. This app has no authentication or rate limiting; public visitors may submit tickets and trigger OpenAI usage. Do not enter sensitive or real customer data. Before production, use persistent paid Postgres and add access controls and rate limits.
+
+The Blueprint expects the default URLs `blackcoffeecode-resolveiq-web.onrender.com` and `blackcoffeecode-resolveiq-api.onrender.com`. If Render assigns different hostnames, update `VITE_API_URL` on the frontend and `CORS_ORIGINS` on the API to match.
+
 Add your OpenAI API key to `ticket-triage/.env` to enable automatic AI analysis after standard triage. Standard rule-based triage works without a key. Never put the key in frontend code or commit `.env`.
 
 AI results are stored separately for each ticket and appear in the Recent Tickets section. The endpoint is `POST /tickets/{ticket_id}/ai-analysis`; its response is documented in `/docs`. See [ticket-triage/README.md](ticket-triage/README.md#optional-openai-analysis) for details.

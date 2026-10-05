@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     openai_api_key: str | None = None
     openai_model: str = "gpt-4.1-mini"
     openai_timeout_seconds: float = 30.0
+    cors_origins: str = "http://localhost:3000"
 
 
 def get_settings() -> Settings:

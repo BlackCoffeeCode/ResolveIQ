@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: blackcoffeecode-resolveiq-api
+    runtime: docker
+    dockerfilePath: ./ticket-triage/backend/Dockerfile
+    dockerContext: ./ticket-triage/backend
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: blackcoffeecode-resolveiq-db
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: OPENAI_TIMEOUT_SECONDS
+        value: "30"
+      - key: CORS_ORIGINS
+        value: https://blackcoffeecode-resolveiq-web.onrender.com
+
+  - type: web
+    name: blackcoffeecode-resolveiq-web
+    runtime: static
+    buildCommand: cd ticket-triage/frontend && npm ci && npm run build
+    staticPublishPath: ticket-triage/frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: blackcoffeecode-resolveiq-api
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
+
+databases:
+  - name: blackcoffeecode-resolveiq-db
+    databaseName: ticketdb
+    user: resolveiq
+    plan: free
+    region: oregon
