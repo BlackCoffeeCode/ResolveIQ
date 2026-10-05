@@ -23,9 +23,9 @@ docker compose up --build
 - Live app: [ResolveIQ](https://blackcoffeecode-resolveiq-web.onrender.com)
 - API documentation: [Swagger UI](https://blackcoffeecode-resolveiq-api.onrender.com/docs)
 
-The root [`render.yaml`](render.yaml) Blueprint defines a static frontend, Docker API, and free PostgreSQL database. In Render, create a new Blueprint and connect `BlackCoffeeCode/ResolveIQ`. Enter a newly rotated `OPENAI_API_KEY` directly in Render when prompted; never put it in the Blueprint or GitHub.
+The root [`render.yaml`](render.yaml) Blueprint defines the static frontend and Docker API on Render. The database is hosted on Neon Free, so the live app keeps its frontend and API on Render free-tier hosting without the 30-day free Postgres expiry. In Render, create a new Blueprint and connect `BlackCoffeeCode/ResolveIQ`. Set `DATABASE_URL` and a newly rotated `OPENAI_API_KEY` directly in the Render dashboard as secrets; never put either in the Blueprint or GitHub.
 
-Free services can sleep, and free database limits/retention make this a demo, not durable production hosting. This app has no authentication or rate limiting; public visitors may submit tickets and trigger OpenAI usage. Do not enter sensitive or real customer data. Before production, use persistent paid Postgres and add access controls and rate limits.
+Free services can sleep, and free hosting is best treated as a demo, not durable production hosting. This app has no authentication or rate limiting; public visitors may submit tickets and trigger OpenAI usage. Do not enter sensitive or real customer data. Before production, add access controls, rate limits, and a paid always-on deployment plan if needed.
 
 The Blueprint expects the default URLs `blackcoffeecode-resolveiq-web.onrender.com` and `blackcoffeecode-resolveiq-api.onrender.com`. If Render assigns different hostnames, update `VITE_API_URL` on the frontend and `CORS_ORIGINS` on the API to match.
 
