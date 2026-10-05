@@ -42,7 +42,7 @@ flowchart TD
 TicketService -->|standard result| API
 API --> StandardPanel
 
-	UI -->|POST /tickets/{ticket_id}/ai-analysis| API
+	UI -->|AI analysis request| API
 	API --> AIController[AI analysis controller]
 	AIController -->|load ticket message| TicketService
 	AIController --> AIService[AI analysis service]
