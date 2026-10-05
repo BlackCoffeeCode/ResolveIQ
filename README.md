@@ -39,6 +39,34 @@ Add your OpenAI API key to `ticket-triage/.env` to enable automatic AI analysis 
 
 AI results are stored separately for each ticket and appear in the Recent Tickets section. The endpoint is `POST /tickets/{ticket_id}/ai-analysis`; its response is documented in `/docs`. See [ticket-triage/README.md](ticket-triage/README.md#optional-openai-analysis) for details.
 
+## Final Architecture Overview
+This is the final production-style architecture of the live deployment.
+
+```mermaid
+flowchart LR
+    U[User / Demo Visitor] --> W[React Frontend<br/>Render Static Site]
+    W -->|HTTPS API calls| A[FastAPI Backend<br/>Render Web Service]
+    A -->|SQLAlchemy ORM| N[(Neon Free PostgreSQL<br/>Production DB)]
+    A -->|AI ticket analysis| O[OpenAI API]
+    O -->|Structured response| A
+
+    subgraph LocalDev[Local Development]
+        D[Developer] --> C[Docker Compose]
+        C --> FE[React App<br/>localhost:3000]
+        C --> BE[FastAPI App<br/>localhost:8000]
+        BE --> PG[(Local Postgres<br/>ticketdb)]
+    end
+
+    subgraph Render[Render Deployment]
+        W
+        A
+    end
+
+    subgraph Neon[Neon]
+        N
+    end
+```
+
 ## Architecture Overview
 The standard and AI analyses are independent paths. Both use the saved ticket, but each result is stored separately.
 
