@@ -21,9 +21,15 @@ docker compose up --build
 ## Deploy to Render (Free Demo)
 
 - Live app: [ResolveIQ](https://blackcoffeecode-resolveiq-web.onrender.com)
+- API: [blackcoffeecode-resolveiq-api.onrender.com](https://blackcoffeecode-resolveiq-api.onrender.com)
 - API documentation: [Swagger UI](https://blackcoffeecode-resolveiq-api.onrender.com/docs)
 
-The root [`render.yaml`](render.yaml) Blueprint defines the static frontend and Docker API on Render. The database is hosted on Neon Free, so the live app keeps its frontend and API on Render free-tier hosting without the 30-day free Postgres expiry. In Render, create a new Blueprint and connect `BlackCoffeeCode/ResolveIQ`. Set `DATABASE_URL` and a newly rotated `OPENAI_API_KEY` directly in the Render dashboard as secrets; never put either in the Blueprint or GitHub.
+Current live setup:
+- Frontend and API run on Render free-tier services.
+- Database runs on Neon Free Postgres.
+- `DATABASE_URL` and `OPENAI_API_KEY` are managed in the Render dashboard as secrets.
+
+The root [`render.yaml`](render.yaml) Blueprint defines the static frontend and Docker API on Render. The database is hosted on Neon Free, which avoids the 30-day free Postgres expiry that Render's managed Postgres service has. In Render, create a new Blueprint and connect `BlackCoffeeCode/ResolveIQ`. Set `DATABASE_URL` and a newly rotated `OPENAI_API_KEY` directly in the Render dashboard as secrets; never put either in the Blueprint or GitHub.
 
 Free services can sleep, and free hosting is best treated as a demo, not durable production hosting. This app has no authentication or rate limiting; public visitors may submit tickets and trigger OpenAI usage. Do not enter sensitive or real customer data. Before production, add access controls, rate limits, and a paid always-on deployment plan if needed.
 
